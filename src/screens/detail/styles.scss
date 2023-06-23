@@ -1,0 +1,50 @@
+.home-container {
+  height: 100%;
+
+
+  .ticker-container {
+  }
+
+  .ticker-item {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+  }
+
+  .ticker-item:hover {
+    transform: scale(1.003);
+    background-color: #00000070;
+    cursor: pointer;
+
+  }
+
+  .ticker-item.selected {
+    transform: scale(1.003);
+    background-color: #00000070;
+    cursor: pointer;
+
+  }
+}
+
+.header {
+  position: sticky;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  top: 0px;
+
+  .title {
+    font-size: 36px;
+  }
+
+  .description {
+
+  }
+}
+
+.is-dark .header {
+  background-color: #252525;
+}
+
+
