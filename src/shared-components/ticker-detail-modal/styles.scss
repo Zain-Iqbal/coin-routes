@@ -1,0 +1,41 @@
+.ticker-detail-container {
+  min-width: 500px;
+  width: 1280px;
+  background-color: white;
+  padding: 10px;
+  color: black;
+  min-height: 100px;
+  position: relative;
+  padding-bottom: 50px;
+
+  .title{
+    font-size: 34px;
+    display: flex;
+    column-gap: 10px;
+  }
+
+  .modal-footer{
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .detail-list-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    column-gap: 20px;
+    row-gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.ticker-detail-container.dark {
+  background-color: black;
+  color: white;
+}
+

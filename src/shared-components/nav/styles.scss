@@ -1,3 +1,28 @@
-*{
-
+.nav-container{
+  display: flex;
+  justify-content: space-between;
 }
+
+.nav-left-container{
+  display: flex;
+  column-gap: 20px;
+}
+
+.nav-class {
+  background-color: #dcdcdc;
+  color: black;
+}
+
+.is-dark .nav-class {
+  background-color: black;
+  color: white;
+}
+
+.nav-btn {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+

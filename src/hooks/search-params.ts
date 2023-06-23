@@ -7,8 +7,3 @@ const useSearchParams = (props) => {
 }
 
 export default useSearchParams
-
-export const getMultipleParams = (location, q) => {
-    const parma = new URLSearchParams(location.search).get(q)
-    return parma
-}

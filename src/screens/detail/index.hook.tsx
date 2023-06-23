@@ -1,30 +1,58 @@
-import React from "react";
-import {useGetTickersQuery} from "../../features/api/inject-endpoint-api";
+import React, {useEffect, useState} from "react";
+import {useGetCandlesQuery} from "../../features/api/inject-endpoint-api";
 
-import './styles.scss'
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setModalId} from "../../features/detail-slice";
-import {modalIdSelector} from "../../selectors/detail-selector";
+import {useParams} from "react-router-dom";
+import {ApexOptions} from "apexcharts";
 
-const PAGE_TITLE = `Tickers`
-const PAGE_DESCRIPTION = `The tickers endpoint provides a high level overview of the state of the
-                market. It shows the current best bid and ask, the last traded price, as well as information on the
-                daily volume and price movement over the last day. The endpoint can retrieve multiple tickers with a
-                single query.`
-const useHome = () => {
-    const dispatch = useDispatch()
-    const id = useSelector(modalIdSelector)
-    const {data = [], isFetching = true} = useGetTickersQuery({symbols: 'ALL'}, {refetchOnMountOrArgChange: true})
-
-    const detailModalHandler = (value: string) => {
-        const data = window.location
-        const {origin = '', pathname = ''} = data
-        const newPath = `${origin}${pathname}?id=${value}`
-        window.history.replaceState(null, '', newPath)
-        dispatch(setModalId(value))
+const CHART_OPTIONS: ApexOptions = {
+    chart: {
+        type: 'candlestick',
+        height: 350
+    },
+    title: {
+        text: 'CandleStick Chart',
+        align: 'left'
+    },
+    xaxis: {
+        type: 'datetime'
+    },
+    yaxis: {
+        tooltip: {
+            enabled: true
+        }
     }
-
-    return {pageDescription: PAGE_DESCRIPTION, pageTitle: PAGE_TITLE, data, isFetching, detailModalHandler, id}
 }
 
-export default useHome
+
+const useTickerDetail = () => {
+    const dispatch = useDispatch()
+    let {id: urlId = ''} = useParams()
+    const header = !!urlId && urlId[0] == 't' ? `trade:1D:${urlId}/hist` : `trade:1D:${urlId}:p30/hist`
+    const {data = [], isFetching = true} = useGetCandlesQuery({req: header}, {refetchOnMountOrArgChange: true})
+
+    const [series, setSeries] = useState([])
+
+    useEffect(() => {
+        if (!!data && !isFetching) {
+            let dataList = [];
+            data?.map(item => {
+                const newItem = {
+                    x: new Date(item[0]),
+                    y: [item[1], item[3], item[4], item[2]]
+                }
+                dataList.push(newItem)
+            })
+            setSeries([{data: dataList}])
+        }
+
+    }, [isFetching])
+    const detailModalHandler = () => {
+        dispatch(setModalId(urlId))
+    }
+
+    return {pageTitle: urlId, isFetching, detailModalHandler, series, options: CHART_OPTIONS}
+}
+
+export default useTickerDetail

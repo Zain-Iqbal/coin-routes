@@ -1,30 +1,19 @@
 import React from "react";
-
-import useHome from "./index.hook";
+import Chart from "react-apexcharts";
+import useTickerDetail from "./index.hook";
 
 import './styles.scss'
 
-const Home = () => {
-    const {pageDescription, pageTitle, data, isFetching, detailModalHandler, id} = useHome()
+const TickerDetail = () => {
+    const { pageTitle, isFetching, detailModalHandler, series, options} = useTickerDetail()
 
-    return <div className={'home-container'}>
+    return <div className={'detail-container'}>
         <div className={'header'}>
             <div className={'title'}>{pageTitle}</div>
-            <div className={'description fade'}>{pageDescription}</div>
         </div>
-        <div className={'ticker-container'}>
-            {data.map(item => {
-                return <div key={`${item[0]}`} className={`ticker-item ${id === item[0] ? 'selected' : ''}`}
-                            onClick={() => detailModalHandler(item[0])}>
-                    <div>{item[0]}</div>
-                    <div className={'button-container'}>
-                        <button className={'btn'}>View Ticker</button>
-                        <button className={'btn'}>View Detail</button>
-                    </div>
-                </div>
-            })}
-        </div>
+        <button className={'btn margin-btm'} onClick={() => detailModalHandler()}>View Ticker</button>
+        {!!series && !!series.length &&<Chart options={options} series={series} type="candlestick" height={350}/>}
     </div>
 }
 
-export default Home
+export default TickerDetail

@@ -1,30 +1,25 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-import {IUserSlice} from "../interface";
+import {IDetailSlice} from "../interface";
 
-const initialSate: IUserSlice = {
-    userList: []
+const initialSate: IDetailSlice = {
+    modalId: null
 }
 
-export const userSlice = createSlice({
-    name: 'collectionDetail',
+export const detailSlice = createSlice({
+    name: 'detailSlice',
     initialState: initialSate,
     reducers: {
-        setUserList: (state, action) => {
-            const payload = !!action && !!action.payload ? action.payload : undefined
-            const {users = [], page = 1} = payload || {}
-            if (page === 1) {
-                state.userList = users
-            } else {
-                state.userList = [...state.userList, ...users]
-            }
+        setModalId: (state, action) => {
+            const payload = !!action && !!action.payload ? action.payload : null
+            state.modalId = payload
         },
     },
 
 })
 
 export const {
-    setUserList
-} = userSlice.actions
+    setModalId
+} = detailSlice.actions
 
-export default userSlice.reducer
+export default detailSlice.reducer

@@ -1,27 +1,17 @@
 import {configureStore} from '@reduxjs/toolkit'
 import {setupListeners} from '@reduxjs/toolkit/query'
 
-import walletSlice from "../features/wallet-slice";
-import auth from "../features/auth-slice";
-import nft from "../features/nft-slice";
-import collection from "../features/collection-slice";
-import user from "../features/user-slice";
-import {apiSlice, apiSwapSlice} from "../features/api";
+import {apiSlice} from "../features/api";
+import detail from "../features/detail-slice";
 
-const apiMiddlewareList = [apiSlice.middleware, apiSwapSlice.middleware]
+
+const apiMiddlewareList = [apiSlice.middleware]
 
 export const store = configureStore({
     reducer: {
         [apiSlice.reducerPath]: apiSlice.reducer,
-        [apiSwapSlice.reducerPath]: apiSwapSlice.reducer,
-        walletSlice: walletSlice,
-        nft: nft,
-        auth: auth,
-        collection: collection,
-        user: user,
-
+        detail: detail
     },
-    // devTools: process.env.REACT_APP_ENV === 'dev',
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(apiMiddlewareList),
 })
