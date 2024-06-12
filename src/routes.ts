@@ -5,5 +5,5 @@ export const ROUTES = {
 
 export const NAV_ROUTES = [{
     route: ROUTES.default,
-    label: 'Home'
+    label: 'Crypto Trading'
 }]

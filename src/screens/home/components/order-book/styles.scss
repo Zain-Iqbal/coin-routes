@@ -1,0 +1,132 @@
+.icon-container{
+ display: flex;
+ align-items: center;
+ column-gap: 5px;
+margin-bottom: 5px;
+margin-top: 10px;
+}
+
+.order-icon{
+ border: 1px solid  #DCDCDC80;
+ background-color: #DCDCDC20;
+ width: 35px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+  height: 30px;
+ border-radius: 3px;
+}
+
+.order-icon:hover{
+ cursor: pointer;
+ transform: scale(1.1);
+}
+
+.selected-icon{
+ background-color: #DCDCDC90;
+}
+
+
+.order-book {
+ max-width: 300px;
+ min-width: 300px;
+ padding: 2px;
+ border: 1px solid #acacac20;
+}
+
+.row-container {
+ display: flex;
+ letter-spacing: 1px;
+ align-items: center;
+ padding: 1px;
+
+ & div:first-child {
+  font-size: 12px;
+ }
+
+ & div:last-child {
+  font-size: 12px;
+ }
+
+ & div:first-child, & h5:first-child {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ & div:last-child, & h5:last-child {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+}
+
+.bid-section.border {
+ padding-bottom: 5px;
+ border-bottom: 1px solid #acacac20;
+}
+
+.ask-section.border {
+ padding-top: 5px;
+ padding-bottom: 15px;
+}
+
+.bid-section .row-container {
+ & div:last-child, & h4:last-child {
+  color: #F5465D;
+ }
+}
+
+.row-container.order-row:nth-child(2n) {
+ background-color: #DCDCDC15;
+}
+
+
+.ask-section .row-container {
+ & div:last-child, & h4:last-child {
+  color: #3CBD85;
+ }
+}
+
+.bid-header{
+ background-color: #F23645;
+ font-weight: 400;
+ color: white;
+ padding: 2px;
+}
+
+.ask-header{
+ background-color: #2F9981;
+ font-weight: 400;
+ color: white;
+ padding: 2px;
+}
+
+
+.row-container.header {
+ padding: 10px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: #DCDCDC;
+ margin-bottom: 5px;
+}
+
+.is-dark .row-container.header {
+ background-color: #00000070;
+}
+
+.bar-order-book {
+ width: 50px;
+}
+
+.order-book-top-section {
+ display: flex;
+ justify-content: space-between;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ align-items: flex-start;
+}
+

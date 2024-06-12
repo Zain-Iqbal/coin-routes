@@ -1,8 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import {BASE_URL_PARTIAL} from "../../utils/constants";
+import {BASE_URL} from "../../utils/constants";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: BASE_URL_PARTIAL,
+    baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
         headers.set('Accept','application/json')
         headers.set('Content-Type','application/json')
@@ -18,6 +18,6 @@ const baseQueryGetHeaderToken = async (args, api, extraOptions) => {
 
 export const apiSlice = createApi({
     baseQuery: baseQueryGetHeaderToken,
-    tagTypes: ['Ticker'],
+    tagTypes: ['OrderBook'],
     endpoints: builder => ({})
 })

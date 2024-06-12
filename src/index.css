@@ -1,6 +1,10 @@
-body {
+* {
   margin: 0;
   box-sizing: border-box;
+  padding: 0;
+  --bid-bg-color: #F23645;
+  --ask-bg-color: #2F9981;
+  font-family: 'Open Sans';
 }
 
 
@@ -14,3 +18,17 @@ body {
 display: flex;
   column-gap: 10px;
 }
+
+
+.loading-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.loading-container .loader{
+  display: flex;
+  justify-content: space-around;
+}
+
+

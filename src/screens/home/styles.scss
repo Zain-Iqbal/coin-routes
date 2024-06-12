@@ -1,53 +1,74 @@
 .home-container {
   height: 100%;
-
-
-  .ticker-container {
-  }
-
-  .ticker-item {
-    padding: 15px;
-    display: flex;
-    align-items: center;
-  justify-content: space-between;
-  }
-
-  .ticker-item:hover {
-    transform: scale(1.003);
-    background-color: #00000070;
-    cursor: pointer;
-
-  }
-
-  .ticker-item.selected {
-    transform: scale(1.003);
-    background-color: #00000070;
-    cursor: pointer;
-
-  }
-}
-
-.header {
-  position: sticky;
+  display: flex;
   padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  top: 0px;
+  min-width: 1080px;
 
-  .title {
-    font-size: 36px;
+  .order-book {
+    flex: 0.4;
+  }
+
+  .left-section {
+    flex: 1;
+  }
+
+  .left-top-section {
     display: flex;
-    align-items: center;
-    column-gap: 10px;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
-  .description {
+  .best-wrapper {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 
+  .drop-down-container {
+    width: 300px;
+    margin-right: 20px;
+  }
+  .chart-section{
+    display: flex;
+    flex: 1;
+    justify-content: flex-start !important;
+    align-items: flex-start;
   }
 }
 
-.is-dark .header {
-  background-color: #252525;
+.is-dark .MuiFormControl-root {
+  label {
+    color: white;
+  }
+
+  .MuiSelect-select {
+    color: white;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #DCDCDC50;
+  }
+
+  svg {
+    fill: white;
+  }
 }
 
+.is-dark #tradingview-widget-container{
+  background-color: #161A25;
+}
+
+.is-dark .recharts-default-tooltip{
+  color: black;
+}
+.custom-tooltip{
+  background-color: white;
+  padding: 5px;
+}
+.is-dark .custom-tooltip{
+  background-color: #000000;
+}
 

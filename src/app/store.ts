@@ -2,7 +2,7 @@ import {configureStore} from '@reduxjs/toolkit'
 import {setupListeners} from '@reduxjs/toolkit/query'
 
 import {apiSlice} from "../features/api";
-import detail from "../features/detail-slice";
+import main from "../features/main-slice";
 
 
 const apiMiddlewareList = [apiSlice.middleware]
@@ -10,7 +10,7 @@ const apiMiddlewareList = [apiSlice.middleware]
 export const store = configureStore({
     reducer: {
         [apiSlice.reducerPath]: apiSlice.reducer,
-        detail: detail
+        main: main
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(apiMiddlewareList),

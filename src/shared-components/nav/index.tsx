@@ -16,7 +16,7 @@ const Navbar = () => {
     return (<AppBar position="static"
                     color={'transparent'}
                     elevation={0}>
-        <Container maxWidth="xl" className={'nav-class'}>
+        <Container className={'nav-class'}>
             <Toolbar disableGutters className={'nav-container'}>
                 <NavLeft pathName={pathName}/>
                 <NavRight toggleTheme={toggleTheme}/>
@@ -35,7 +35,7 @@ const NavLeft = ({pathName = ''}: { pathName: string }) => {
         (route !== ROUTES.default && pathName.includes(route)) ? 'active' : ''
 
         return <Link key={`nav-button-${route}`}
-                     className={`nav-btn ${active}`} to={route}>{label}</Link>
+                     className={`nav-btn ${active}`} to={route}><h3>{label}</h3></Link>
     })}</div>
 }
 
