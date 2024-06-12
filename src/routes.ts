@@ -1,6 +1,6 @@
 export const ROUTES = {
     default: '/',
-    detail: '/detail',
+    home: '/home',
 }
 
 export const NAV_ROUTES = [{

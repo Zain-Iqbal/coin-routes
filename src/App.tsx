@@ -10,6 +10,7 @@ function App() {
         <DefaultLayout>
             <Routes>
                 <Route path={ROUTES.default} element={<Home/>}/>
+                <Route path={ROUTES.home} element={<Home/>}/>
             </Routes>
         </DefaultLayout>
     );
