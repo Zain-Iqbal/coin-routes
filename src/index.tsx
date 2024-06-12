@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {BrowserRouter} from "react-router-dom";
+import { HashRouter} from "react-router-dom";
 import {Provider} from 'react-redux'
-import {
-    createHashRouter,
-    RouterProvider
-} from 'react-router-dom';
 
 import App from './App';
 import ThemeProvider from "./theme/theme-provider";
@@ -17,19 +13,12 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-const router = createHashRouter([
-    {
-        path: "/*",
-        element: <App />,
-    }
-]);
-
 root.render(
         <ThemeProvider>
-            <BrowserRouter>
+            <HashRouter>
                 <Provider store={store}>
-                    <RouterProvider router={router} />
+                        <App />
                 </Provider>
-            </BrowserRouter>
+            </HashRouter>
         </ThemeProvider>
 );
