@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/coin-routes/static/css/main.9d7a9e30.css",
-    "main.js": "/coin-routes/static/js/main.6269ce39.js",
+    "main.js": "/coin-routes/static/js/main.36e95a1f.js",
     "index.html": "/coin-routes/index.html",
     "main.9d7a9e30.css.map": "/coin-routes/static/css/main.9d7a9e30.css.map",
-    "main.6269ce39.js.map": "/coin-routes/static/js/main.6269ce39.js.map"
+    "main.36e95a1f.js.map": "/coin-routes/static/js/main.36e95a1f.js.map"
   },
   "entrypoints": [
     "static/css/main.9d7a9e30.css",
-    "static/js/main.6269ce39.js"
+    "static/js/main.36e95a1f.js"
   ]
 }
