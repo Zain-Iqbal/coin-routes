@@ -4,16 +4,14 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-import useOrderSocket from "../../../../hooks/order.socket.hook";
 import {Currencies} from "../../../../utils/constants";
 
 
 const CurrencyOptions = (props) => {
-    const {currency, setCurrency} = props
-    const {unSubscribeOrderBook, subscribeOrderBook} = useOrderSocket()
+    const {currency, setCurrency, setPrevCurrency} = props
 
     const onChangeCurrency = (e) => {
-        unSubscribeOrderBook(currency)
+        setPrevCurrency(currency)
         const value = e.target.value
         setCurrency(value)
     }

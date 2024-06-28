@@ -7,7 +7,14 @@ import {isConnectedStateSelector} from "../selectors/main-selector";
 
 const useOrderSocket = () => {
     const dipatch = useDispatch()
-    const {sendJsonMessage, lastJsonMessage, readyState} = useWebSocket("wss://ws-feed.pro.coinbase.com");
+    const {sendJsonMessage, lastJsonMessage, readyState} = useWebSocket("wss://ws-feed.pro.coinbase.com", {
+        onOpen: () => {
+            console.log('opened')
+            dipatch(setConnection(true))
+        },
+        //Will attempt to reconnect on all close events, such as server shutting down
+        shouldReconnect: (closeEvent) => true,
+    });
 
     const isConnected = useSelector(isConnectedStateSelector)
 
@@ -17,18 +24,14 @@ const useOrderSocket = () => {
         channels: ['level2_batch', 'ticker']
     })
 
-    const subscribeOrderBook = (type) => {
-        if (!isConnected) {
-            sendJsonMessage(subscribeMessage(type))
+    const subscribeOrderBook = async (type) => {
+          await  sendJsonMessage(subscribeMessage(type))
             dipatch(setConnection(true))
-        }
     }
 
-    const unSubscribeOrderBook = (type) => {
-        if (isConnected) {
-            sendJsonMessage(subscribeMessage(type, false))
+    const unSubscribeOrderBook = async (type) => {
+          await sendJsonMessage(subscribeMessage(type, false))
             dipatch(setConnection(false))
-        }
     }
 
     useEffect(() => {

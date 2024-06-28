@@ -13,7 +13,7 @@ import {aggrData} from "../../../../features/main-slice";
 import './styles.scss'
 
 const useOrderBook = (props) => {
-    const {type} = props
+    const {type, prevType} = props
     const dispatch = useDispatch()
     const {subscribeOrderBook, unSubscribeOrderBook, isConnected} = useOrderSocket()
     const {isFetching, isSuccess} = useGetOrderBookQuery({type: type}, {refetchOnMountOrArgChange: true})
@@ -30,9 +30,10 @@ const useOrderBook = (props) => {
 
     useEffect(() => {
         if (isSuccess) {
+            unSubscribeOrderBook(prevType)
             subscribeOrderBook(type)
         }
-    }, [isSuccess, type])
+    }, [isSuccess])
 
 
     useEffect(() => {

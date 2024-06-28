@@ -2,11 +2,9 @@ import React from "react";
 import {useSelector} from "react-redux";
 
 import Card from "../card";
-import CurrencyOptions from "../currency-options";
 import {tickerStateSelector} from "../../../../selectors/main-selector";
 
 const CardSection = (props) => {
-    const {currency, setCurrency} = props
     const {
         best_ask,
         best_bid,
@@ -15,8 +13,7 @@ const CardSection = (props) => {
         side
     } = useSelector(tickerStateSelector)
 
-    return <div className={'left-top-section'}>
-        <div className={'best-wrapper'}>
+    return <div className={'best-wrapper'}>
             <Card title={'Best Bid'}
                   priceTitle={'Bid Price'}
                   price={best_bid}
@@ -34,10 +31,6 @@ const CardSection = (props) => {
                   type={side}
             />
         </div>
-        <div className={'drop-down-container'}>
-            <CurrencyOptions currency={currency} setCurrency={setCurrency}/>
-        </div>
-    </div>
 }
 
 export default CardSection
